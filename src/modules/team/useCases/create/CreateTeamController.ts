@@ -5,12 +5,13 @@ import { CreateTeamUseCase } from './CreateTeamUseCase';
 
 export class CreateTeamController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { city, name, nameLogo, site, trainer, userId } = request.body;
-    const { file } = request;
+    const { city, name, nameLogo, site, trainer, userId, srcLogo } =
+      request.body;
+    // const { file } = request;
 
-    if (!file) {
-      return response.status(400).json({ message: 'No files uploaded' });
-    }
+    // if (!file) {
+    //   return response.status(400).json({ message: 'No files uploaded' });
+    // }
 
     const createTeamUseCase = container.resolve(CreateTeamUseCase);
 
@@ -19,7 +20,7 @@ export class CreateTeamController {
       name,
       nameLogo,
       site,
-      srcLogo: file.path,
+      srcLogo,
       trainer,
       userId,
     });

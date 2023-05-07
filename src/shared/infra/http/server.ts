@@ -4,7 +4,7 @@ import express from 'express';
 
 import { logger } from '../../providers/logger/implementations/LoggerProvider';
 import { getErrors } from '../errors/getErrors';
-import { routes } from './route';
+import { routes } from './routes';
 
 import '../../containers';
 import '../database';

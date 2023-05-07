@@ -9,10 +9,9 @@ export class UpdateUserController {
     const { name, email } = request.body;
 
     const updateUserUseCase = container.resolve(UpdateUserUseCase);
-    console.log('user');
 
-    const user = await updateUserUseCase.execute({ id, name, email });
+    await updateUserUseCase.execute({ id, name, email });
 
-    return response.status(200).json(user);
+    return response.status(200).json({ message: 'user updated successfully' });
   }
 }

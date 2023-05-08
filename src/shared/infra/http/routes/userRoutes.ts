@@ -6,6 +6,7 @@ import { DeleteUSerController } from '../../../../modules/user/useCases/delete/D
 import { FindByIdController } from '../../../../modules/user/useCases/findById/FindByIdController';
 import { UpdateUserController } from '../../../../modules/user/useCases/update/UpdateUserController';
 import { UpdatePasswordController } from '../../../../modules/user/useCases/updatePassword/UpdatePasswordController';
+import { isAuthenticate } from '../middlewares/isAuthenticated';
 
 const userRoutes = Router();
 
@@ -16,11 +17,15 @@ const updateUserController = new UpdateUserController();
 const updatePasswordUserController = new UpdatePasswordController();
 const deleteUserController = new DeleteUSerController();
 
-userRoutes.get('/:id', findUserByIdController.handle);
+userRoutes.get('/', isAuthenticate, findUserByIdController.handle);
 userRoutes.post('/', createUserController.handle);
 userRoutes.post('/authenticate', authenticateUserController.handle);
-userRoutes.put('/:id', updateUserController.handle);
-userRoutes.put('/password/:id', updatePasswordUserController.handle);
-userRoutes.delete('/:id', deleteUserController.handle);
+userRoutes.put('/', isAuthenticate, updateUserController.handle);
+userRoutes.put(
+  '/password/',
+  isAuthenticate,
+  updatePasswordUserController.handle,
+);
+userRoutes.delete('/', isAuthenticate, deleteUserController.handle);
 
 export { userRoutes };

@@ -5,7 +5,7 @@ import { DeleteTeamController } from '../../../../modules/team/useCases/delete/D
 import { FindAllTeamController } from '../../../../modules/team/useCases/findAll/FindAllTeamController';
 import { FindTeamAndPlayerController } from '../../../../modules/team/useCases/findTeamAndPlayer/FindTeamAndPlayerController';
 import { UpdateTeamController } from '../../../../modules/team/useCases/update/UpdateTeamController';
-import { upload } from '../../../config/multer';
+import { upload } from '../../../../config/multer';
 
 const teamRoutes = Router();
 

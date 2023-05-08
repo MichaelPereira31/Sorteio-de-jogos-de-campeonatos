@@ -27,7 +27,7 @@ export class AuthenticateUseCase {
     }
 
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id },
       process.env.SECRET_KEY_TOKEN || '123456789',
       {
         expiresIn: '72h',

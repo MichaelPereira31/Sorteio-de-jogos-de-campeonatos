@@ -5,7 +5,7 @@ import { UpdatePasswordUseCase } from './UpdatePasswordUseCase';
 
 export class UpdatePasswordController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { id } = request.user;
     const { password } = request.body;
 
     const updatePasswordUseCase = container.resolve(UpdatePasswordUseCase);

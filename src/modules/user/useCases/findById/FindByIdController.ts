@@ -5,7 +5,7 @@ import { FindByIdUseCase } from './FindByIdUseCase';
 
 export class FindByIdController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { id } = request.user;
 
     const findByIdUseCase = container.resolve(FindByIdUseCase);
 

@@ -5,7 +5,7 @@ import { DeleteUserUseCase } from './DeleteUserUSeCase';
 
 export class DeleteUSerController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { id } = request.user;
 
     const deleteUserController = container.resolve(DeleteUserUseCase);
 

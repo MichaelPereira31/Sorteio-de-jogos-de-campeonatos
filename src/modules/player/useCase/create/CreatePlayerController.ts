@@ -5,18 +5,9 @@ import { CreatePlayerUseCase } from './CreatePlayerUseCase';
 
 export class CreatePlayerController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const {
-      age,
-      height,
-      name,
-      number,
-      photo,
-      position,
-      weight,
-      userId,
-      teamId,
-    } = request.body;
-
+    const { age, height, name, number, photo, position, weight, teamId } =
+      request.body;
+    const { id } = request.user;
     const createPlayerUseCase = container.resolve(CreatePlayerUseCase);
 
     const player = await createPlayerUseCase.execute({
@@ -28,7 +19,7 @@ export class CreatePlayerController {
       photo,
       position,
       weight,
-      userId,
+      userId: id,
     });
 
     return response.status(201).json(player);

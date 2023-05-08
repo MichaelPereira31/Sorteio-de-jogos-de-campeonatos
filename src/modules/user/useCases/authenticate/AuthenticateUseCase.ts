@@ -2,6 +2,7 @@
 import jwt from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
+import authConfig from '../../../../config/auth';
 import { AppError } from '../../../../shared/infra/errors/AppError';
 import { decrypt } from '../../../../shared/utils/decrypt';
 import { IAuthenticateDTO } from '../../dtos/IAuthenticateDTO';
@@ -27,10 +28,10 @@ export class AuthenticateUseCase {
     }
 
     const token = jwt.sign(
-      { userId: user._id },
-      process.env.SECRET_KEY_TOKEN || '123456789',
+      { userId: user.id, email: user.email },
+      authConfig.jwt.secret,
       {
-        expiresIn: '72h',
+        expiresIn: authConfig.jwt.expiresIn,
       },
     );
 

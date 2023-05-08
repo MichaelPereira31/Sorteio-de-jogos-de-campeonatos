@@ -5,8 +5,8 @@ import { CreateTeamUseCase } from './CreateTeamUseCase';
 
 export class CreateTeamController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { city, name, nameLogo, site, trainer, userId, srcLogo } =
-      request.body;
+    const { city, name, nameLogo, site, trainer, srcLogo } = request.body;
+    const { id } = request.user;
     // const { file } = request;
 
     // if (!file) {
@@ -22,7 +22,7 @@ export class CreateTeamController {
       site,
       srcLogo,
       trainer,
-      userId,
+      userId: id,
     });
 
     return response.status(201).json(team);

@@ -29,7 +29,7 @@ export class AuthenticateUseCase {
 
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      authConfig.jwt.secret,
+      authConfig.jwt.secret as string,
       {
         expiresIn: authConfig.jwt.expiresIn,
       },

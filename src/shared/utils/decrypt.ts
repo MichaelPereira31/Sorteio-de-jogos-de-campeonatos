@@ -7,9 +7,7 @@ export function decrypt(secretKeyEncrypted: string) {
 
   const decipher = createDecipheriv(
     'aes-256-cbc',
-    Buffer.from(
-      (process.env.ENCRYPT_KEY as string) || 'f96e0cec2e20ecf7ce030da574faf794',
-    ),
+    Buffer.from(process.env.ENCRYPT_KEY as string),
     Buffer.from(iv, 'hex'),
   );
 

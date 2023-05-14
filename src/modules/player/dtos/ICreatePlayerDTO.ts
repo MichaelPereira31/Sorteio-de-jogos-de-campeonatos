@@ -7,5 +7,4 @@ export type ICreatePlayerDTO = {
   teamId: string;
   position: string;
   number: number;
-  userId: string;
 };

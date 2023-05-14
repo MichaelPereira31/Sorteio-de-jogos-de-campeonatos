@@ -22,9 +22,8 @@ export class CreatePlayerUseCase {
     photo,
     position,
     weight,
-    userId,
   }: ICreatePlayerDTO) {
-    const user = await this.userRepository.findById(userId);
+    const user = await this.userRepository.findById(teamId);
 
     if (!user) {
       throw new AppError('User not found', 404);
@@ -39,7 +38,6 @@ export class CreatePlayerUseCase {
       photo,
       position,
       weight,
-      userId,
     });
 
     return player;

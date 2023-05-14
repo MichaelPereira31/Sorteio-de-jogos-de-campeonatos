@@ -11,8 +11,8 @@ export class PlayerRepository implements IPlayerRepository {
     return player;
   }
 
-  async findAllPlayer(userId: string): Promise<IPlayer[]> {
-    const player = await Player.find({ userId });
+  async findAllPlayer(teamId: string): Promise<IPlayer[]> {
+    const player = await Player.find({ teamId });
 
     return player;
   }
@@ -26,7 +26,6 @@ export class PlayerRepository implements IPlayerRepository {
     age,
     position,
     number,
-    userId,
   }: ICreatePlayerDTO): Promise<IPlayer> {
     const player = await Player.create({
       name,
@@ -37,7 +36,6 @@ export class PlayerRepository implements IPlayerRepository {
       age,
       position,
       number,
-      userId,
     });
 
     return player;

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { logger } from '../../providers/logger/implementations/LoggerProvider';
 
 mongoose
-  .connect((process.env.MONGO_URI as string) || 'mongodb://127.0.0.1:27017/api')
+  .connect('mongodb+srv://User:WCB3RR9C76hzGGBp@api.a8oqxkw.mongodb.net/')
   .then(() => {
     logger.info('Mongo connected');
   })

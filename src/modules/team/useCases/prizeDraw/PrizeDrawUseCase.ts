@@ -26,11 +26,11 @@ export class PrizeDrawUseCase {
         try {
           const players = await this.playerRepository.findAllPlayer(userId);
 
-          if (players.length < 22) {
-            return new AppError(
-              `need to register more players in the team${team.name}`,
-            );
-          }
+          // if (players.length < 22) {
+          //   return new AppError(
+          //     `need to register more players in the team${team.name}`,
+          //   );
+          // }
           return team.name;
         } catch (e) {
           throw new AppError(e.message);

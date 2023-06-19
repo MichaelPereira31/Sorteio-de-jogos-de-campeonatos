@@ -17,7 +17,7 @@ const deleteTeamsController = new DeleteTeamController();
 const prizeDrawController = new PrizeDrawController();
 
 teamRoutes.get('/', isAuthenticate, findAllTeamsController.handle);
-teamRoutes.get('/prize', isAuthenticate, prizeDrawController.handle);
+teamRoutes.get('/prize', prizeDrawController.handle);
 teamRoutes.get(
   '/name/:name',
   isAuthenticate,

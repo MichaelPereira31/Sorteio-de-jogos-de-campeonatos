@@ -5,12 +5,12 @@ import { PrizeDrawUseCase } from './PrizeDrawUseCase';
 
 export class PrizeDrawController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.user;
+    // const { id } = request.user;
 
     const prizeDrawUsecase = container.resolve(PrizeDrawUseCase);
 
-    const t = await prizeDrawUsecase.execute(id);
+    const prize = await prizeDrawUsecase.execute('teste');
 
-    return response.status(200).json(t);
+    return response.status(200).json(prize);
   }
 }
